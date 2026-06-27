@@ -1,13 +1,16 @@
 import { Outlet, Link, useLocation } from 'react-router-dom'
-import { LayoutDashboard, BarChart3, Bot, Brain, Bell, Settings, Wifi, WifiOff } from 'lucide-react'
+import { LayoutDashboard, BarChart3, Bot, Brain, Bell, LineChart, Wallet, Settings, Wifi, WifiOff } from 'lucide-react'
 import { useSupabase } from '../services/SupabaseProvider'
 
 const navItems = [
   { path: '/', label: 'Dashboard', icon: LayoutDashboard },
+  { path: '/portfolio', label: 'Portfolio', icon: Wallet },
   { path: '/trades', label: 'Trades', icon: BarChart3 },
   { path: '/strategies', label: 'Estrategias', icon: Bot },
   { path: '/signals', label: 'Señales IA', icon: Brain },
   { path: '/alerts', label: 'Alertas', icon: Bell },
+  { path: '/charts', label: 'Gráficos', icon: LineChart },
+  { path: '/settings', label: 'Configuración', icon: Settings },
 ]
 
 export default function Layout() {

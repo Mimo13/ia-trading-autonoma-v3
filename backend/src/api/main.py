@@ -1,7 +1,7 @@
 from fastapi import FastAPI, HTTPException, Depends
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
-from src.api import trades, strategies, signals, alerts, portfolio
+from src.api import trades, strategies, signals, alerts, portfolio, freqtrade
 from src.config import DEBUG
 
 app = FastAPI(
@@ -24,6 +24,7 @@ app.include_router(strategies.router, prefix="/api/strategies", tags=["Strategie
 app.include_router(signals.router, prefix="/api/signals", tags=["Signals"])
 app.include_router(alerts.router, prefix="/api/alerts", tags=["Alerts"])
 app.include_router(portfolio.router, prefix="/api/portfolio", tags=["Portfolio"])
+app.include_router(freqtrade.router, prefix="/api/freqtrade", tags=["Freqtrade"])
 
 
 @app.exception_handler(Exception)

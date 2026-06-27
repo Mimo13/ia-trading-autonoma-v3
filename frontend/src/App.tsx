@@ -6,6 +6,9 @@ import Trades from './pages/Trades'
 import Strategies from './pages/Strategies'
 import Signals from './pages/Signals'
 import Alerts from './pages/Alerts'
+import Charts from './pages/Charts'
+import Portfolio from './pages/Portfolio'
+import Settings from './pages/Settings'
 
 function App() {
   return (
@@ -18,6 +21,9 @@ function App() {
             <Route path="strategies" element={<Strategies />} />
             <Route path="signals" element={<Signals />} />
             <Route path="alerts" element={<Alerts />} />
+            <Route path="charts" element={<Charts />} />
+            <Route path="portfolio" element={<Portfolio />} />
+            <Route path="settings" element={<Settings />} />
           </Route>
         </Routes>
       </BrowserRouter>

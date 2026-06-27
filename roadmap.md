@@ -158,15 +158,16 @@
 
 ### FASE 3: Skill Hermes `freqtrade-control` (Prioridad: ALTA)
 
-- [ ] **T3.1** — Crear estructura de la skill (`skill.yaml`, `handler.py`, `auth.py`)
-- [ ] **T3.2** — Implementar autenticación JWT (login/refresh/cache)
-- [ ] **T3.3** — Implementar endpoints de monitorización (solo lectura)
-- [ ] **T3.4** — Implementar endpoints de control (con confirmación)
-- [ ] **T3.5** — Crear mapeo de intenciones conversacionales
-- [ ] **T3.6** — Implementar manejo de errores y resiliencia
-- [ ] **T3.7** — Implementar logging de acciones en `app.ai_signals`
-- [ ] **T3.8** — Tests unitarios de la skill
-- [ ] **T3.9** — Documentar uso y ejemplos de comandos
+- [x] **T3.1** — API endpoints para Freqtrade (backend/src/api/freqtrade.py) ✅
+- [x] **T3.2** — Autenticación JWT contra Freqtrade ✅
+- [x] **T3.3** — Endpoints de monitorización (status, profit, balance, performance) ✅
+- [x] **T3.4** — Endpoints de control (start, stop, reload_config) ✅
+- [x] **T3.5** — Manejo de errores y resiliencia (Freqtrade offline) ✅
+- [ ] **T3.6** — Crear estructura de la skill Hermes (`skill.yaml`, `handler.py`)
+- [ ] **T3.7** — Crear mapeo de intenciones conversacionales
+- [ ] **T3.8** — Implementar logging de acciones en `app.ai_signals`
+- [ ] **T3.9** — Tests unitarios de la skill
+- [ ] **T3.10** — Documentar uso y ejemplos de comandos
 
 ### FASE 4: Integración de Datos (Prioridad: MEDIA)
 
@@ -188,8 +189,10 @@
 - [x] **T5.7** — Implementar vista de Estrategias (estado, config) ✅
 - [x] **T5.8** — Implementar sistema de alertas en tiempo real ✅
 - [x] **T5.9** — Componentes UI reutilizables (Card, Badge, Button, Table) ✅
-- [ ] **T5.10** — Implementar gráficos de rendimiento (Recharts)
-- [ ] **T5.11** — Diseño responsive para móvil
+- [x] **T5.10** — Implementar gráficos de rendimiento (Recharts) ✅
+- [x] **T5.11** — Vista de Portfolio detallada con gráficos ✅
+- [x] **T5.12** — Vista de Configuración/Settings ✅
+- [ ] **T5.13** — Diseño responsive para móvil
 
 ### FASE 6: App Móvil (Prioridad: BAJA)
 
@@ -201,11 +204,12 @@
 
 ### FASE 7: Monitoreo y Alertas (Prioridad: MEDIA)
 
-- [ ] **T7.1** — Implementar health checks periódicos de Freqtrade
-- [ ] **T7.2** — Configurar alertas de Telegram (vía skill o directo)
-- [ ] **T7.3** — Implementar alertas de drawdown máximo
-- [ ] **T7.4** — Implementar alertas de errores en el bot
-- [ ] **T7.5** — Dashboard de métricas de sistema (CPU/RAM/disk)
+- [x] **T7.1** — Sistema de alertas implementado (frontend + backend) ✅
+- [x] **T7.2** — Vista de alertas con filtros y marcar como leídas ✅
+- [ ] **T7.3** — Implementar health checks periódicos de Freqtrade
+- [ ] **T7.4** — Configurar alertas de Telegram (vía skill o directo)
+- [ ] **T7.5** — Implementar alertas de drawdown máximo
+- [ ] **T7.6** — Dashboard de métricas de sistema (CPU/RAM/disk)
 
 ### FASE 8: Producción y Seguridad (Prioridad: ALTA)
 
@@ -263,14 +267,16 @@
 
 1. ✅ Crear carpeta `docs` y organizar documentación
 2. ✅ Estructura de proyecto creada (backend, frontend, database)
-3. ✅ Backend FastAPI con endpoints CRUD
-4. ✅ Frontend React con páginas base
+3. ✅ Backend FastAPI con endpoints CRUD completos
+4. ✅ Frontend React + TypeScript + Tailwind CSS
 5. ✅ Schema `app` y migraciones SQL
 6. ✅ Repositorio GitHub: https://github.com/Mimo13/ia-trading-autonoma-v3
-7. ✅ Proyecto Supabase Cloud configurado (hqndgumqlfkzmaukptsg)
+7. ✅ Proyecto Supabase Cloud configurado
 8. ✅ Variables de entorno (.env) configuradas
 9. ✅ Migración ejecutada en Supabase Cloud
-10. ✅ Datos de ejemplo insertados (3 estrategias)
+10. ✅ Datos de ejemplo insertados (3 estrategias, 30 trades, 30 snapshots, 3 alertas)
+11. ✅ Componentes UI reutilizables creados
+12. ✅ Scripts de setup y seed data
 
 ---
 
