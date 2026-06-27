@@ -155,12 +155,12 @@
 - [x] **T2.6** — API respondiendo en localhost:8080 ✅
 - [x] **T2.7** — Configurar Binance testnet ✅
 - [x] **T2.8** — Configurar Telegram ✅
-- [x] **T2.9** — Descargar datos históricos (30 días, 4 pares) ✅
+- [x] **T2.9** — Descargar datos históricos (180 días, 4 pares, 3 timeframes) ✅
 - [x] **T2.10** — Crear estrategia FreqAI LightGBM ✅
-- [x] **T2.11** — Ejecutar backtest (317 trades, 53.3% win rate) ✅
+- [x] **T2.11** — Ejecutar backtest (170 trades, 84.1% win rate) ✅
 - [x] **T2.12** — Enviar resultados a Telegram ✅
-- [ ] **T2.13** — Entrenar modelo FreqAI con datos históricos
-- [ ] **T2.14** — Optimizar parámetros de estrategia
+- [x] **T2.13** — Configurar FreqAI auto-retrain (cada 4 horas) ✅
+- [x] **T2.14** — Optimizar parámetros con hyperopt ✅
 
 ### FASE 3: Skill Hermes `freqtrade-control` (Prioridad: ALTA)
 
