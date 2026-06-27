@@ -153,9 +153,10 @@
 - [x] **T2.4** — Estructura de user_data creada ✅
 - [x] **T2.5** — Iniciar Freqtrade con Docker Compose ✅
 - [x] **T2.6** — API respondiendo en localhost:8080 ✅
-- [ ] **T2.7** — Configurar FreqAI con LightGBM
-- [ ] **T2.8** — Entrenar modelo inicial con datos históricos
-- [ ] **T2.9** — Configurar conexión a Binance (testnet primero)
+- [x] **T2.7** — Configurar Binance testnet ✅
+- [x] **T2.8** — Configurar Telegram ✅
+- [ ] **T2.9** — Configurar FreqAI con LightGBM
+- [ ] **T2.10** — Entrenar modelo inicial con datos históricos
 
 ### FASE 3: Skill Hermes `freqtrade-control` (Prioridad: ALTA)
 
