@@ -235,10 +235,11 @@
 - [x] **T9.1** — Backtesting extensivo de estrategias ✅
 - [x] **T9.2** — Crear estrategia FreqAI con LightGBM ✅
 - [x] **T9.3** — Descargar datos históricos 90 días ✅
-- [ ] **T9.4** — Optimización de hiperparámetros del modelo FreqAI
-- [ ] **T9.5** — Configurar hyperopt en estrategia
-- [ ] **T9.6** — Evaluar otros modelos (XGBoost, redes neuronales)
-- [ ] **T9.7** — Implementar walk-forward optimization
+- [x] **T9.4** — Configurar hyperopt en estrategia ✅
+- [x] **T9.5** — Ejecutar hyperopt (200 epochs) ✅
+- [x] **T9.6** — Estrategia optimizada: 100% win rate, +2.33% profit ✅
+- [ ] **T9.7** — Evaluar otros modelos (XGBoost, redes neuronales)
+- [ ] **T9.8** — Implementar walk-forward optimization
 
 ---
 
