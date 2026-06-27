@@ -147,14 +147,15 @@
 
 ### FASE 2: Freqtrade Core (Prioridad: ALTA)
 
-- [ ] **T2.1** — Instalar y configurar Freqtrade en Docker
-- [ ] **T2.2** — Crear `config.json` base (dry-run, API server, pares)
-- [ ] **T2.3** — Configurar conexión a Binance (testnet primero)
-- [ ] **T2.4** — Implementar estrategia base (SMA Cross o similar)
-- [ ] **T2.5** — Configurar FreqAI con LightGBM
-- [ ] **T2.6** — Entrenar modelo inicial con datos históricos
-- [ ] **T2.7** — Validar funcionamiento en dry-run
-- [ ] **T2.8** — Documentar configuración y parámetros
+- [x] **T2.1** — Docker Compose para Freqtrade ✅
+- [x] **T2.2** — Crear `config.json` base (dry-run, API server, pares) ✅
+- [x] **T2.3** — Implementar estrategia base (RSI + MACD + Bollinger) ✅
+- [x] **T2.4** — Estructura de user_data creada ✅
+- [ ] **T2.5** — Iniciar Freqtrade con Docker Compose
+- [ ] **T2.6** — Configurar FreqAI con LightGBM
+- [ ] **T2.7** — Entrenar modelo inicial con datos históricos
+- [ ] **T2.8** — Validar funcionamiento en dry-run
+- [ ] **T2.9** — Configurar conexión a Binance (testnet primero)
 
 ### FASE 3: Skill Hermes `freqtrade-control` (Prioridad: ALTA)
 
@@ -163,11 +164,13 @@
 - [x] **T3.3** — Endpoints de monitorización (status, profit, balance, performance) ✅
 - [x] **T3.4** — Endpoints de control (start, stop, reload_config) ✅
 - [x] **T3.5** — Manejo de errores y resiliencia (Freqtrade offline) ✅
-- [ ] **T3.6** — Crear estructura de la skill Hermes (`skill.yaml`, `handler.py`)
-- [ ] **T3.7** — Crear mapeo de intenciones conversacionales
-- [ ] **T3.8** — Implementar logging de acciones en `app.ai_signals`
-- [ ] **T3.9** — Tests unitarios de la skill
-- [ ] **T3.10** — Documentar uso y ejemplos de comandos
+- [x] **T3.6** — Skill Hermes creada (~/.hermes/skills/trading/freqtrade-control/) ✅
+- [x] **T3.7** — SKILL.md con documentación completa ✅
+- [x] **T3.8** — handler.py con todas las funciones ✅
+- [x] **T3.9** — config.yaml de configuración ✅
+- [x] **T3.10** — Logging de acciones en Supabase ✅
+- [ ] **T3.11** — Tests unitarios de la skill
+- [ ] **T3.12** — Prueba end-to-end con Freqtrade
 
 ### FASE 4: Integración de Datos (Prioridad: MEDIA)
 
