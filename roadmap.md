@@ -139,8 +139,11 @@
 - [x] **T1.6** — Cliente Supabase para TypeScript (frontend/src/services/supabase.ts) ✅
 - [x] **T1.7** — Modelos de datos Pydantic (backend/src/models/schemas.py) ✅
 - [x] **T1.8** — API endpoints CRUD (strategies, trades, signals, alerts, portfolio) ✅
-- [ ] **T1.9** — Ejecutar migración en Supabase Cloud
-- [ ] **T1.10** — Implementar servicio de cifrado para exchange_credentials
+- [x] **T1.9** — Migración ejecutada en Supabase Cloud ✅
+- [x] **T1.10** — Schema `app` expuesto a PostgREST ✅
+- [x] **T1.11** — Permisos concedidos a roles anon/authenticated/service_role ✅
+- [x] **T1.12** — Datos de ejemplo insertados (3 estrategias) ✅
+- [ ] **T1.13** — Implementar servicio de cifrado para exchange_credentials
 
 ### FASE 2: Freqtrade Core (Prioridad: ALTA)
 
@@ -261,10 +264,11 @@
 3. ✅ Backend FastAPI con endpoints CRUD
 4. ✅ Frontend React con páginas base
 5. ✅ Schema `app` y migraciones SQL
-6. ⏳ Crear proyecto en Supabase Cloud
-7. ⏳ Ejecutar migración en Supabase Cloud
-8. ⏳ Configurar variables de entorno (.env)
-9. ⏳ Inicializar repositorio Git
+6. ✅ Repositorio GitHub: https://github.com/Mimo13/ia-trading-autonoma-v3
+7. ✅ Proyecto Supabase Cloud configurado (hqndgumqlfkzmaukptsg)
+8. ✅ Variables de entorno (.env) configuradas
+9. ✅ Migración ejecutada en Supabase Cloud
+10. ✅ Datos de ejemplo insertados (3 estrategias)
 
 ---
 
