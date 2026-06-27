@@ -151,10 +151,10 @@
 - [x] **T2.2** — Crear `config.json` base (dry-run, API server, pares) ✅
 - [x] **T2.3** — Implementar estrategia base (RSI + MACD + Bollinger) ✅
 - [x] **T2.4** — Estructura de user_data creada ✅
-- [ ] **T2.5** — Iniciar Freqtrade con Docker Compose
-- [ ] **T2.6** — Configurar FreqAI con LightGBM
-- [ ] **T2.7** — Entrenar modelo inicial con datos históricos
-- [ ] **T2.8** — Validar funcionamiento en dry-run
+- [x] **T2.5** — Iniciar Freqtrade con Docker Compose ✅
+- [x] **T2.6** — API respondiendo en localhost:8080 ✅
+- [ ] **T2.7** — Configurar FreqAI con LightGBM
+- [ ] **T2.8** — Entrenar modelo inicial con datos históricos
 - [ ] **T2.9** — Configurar conexión a Binance (testnet primero)
 
 ### FASE 3: Skill Hermes `freqtrade-control` (Prioridad: ALTA)
@@ -248,6 +248,8 @@
 | F007 | 2026-06-27 | Mejora | Hook WebSocket para actualizaciones tiempo real | ✅ |
 | F008 | 2026-06-27 | Mejora | Tests backend (FastAPI) | ✅ |
 | F009 | 2026-06-27 | Mejora | Tests frontend (Vitest + Testing Library) | ✅ |
+| F010 | 2026-06-27 | Fix | Corregir configuración Freqtrade (JWT, Telegram) | ✅ |
+| F011 | 2026-06-27 | Mejora | Crear skill Hermes freqtrade-control | ✅ |
 
 ---
 
