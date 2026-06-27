@@ -82,50 +82,54 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="space-y-6">
-      <div className="flex items-center justify-between">
-        <h2 className="text-2xl font-bold text-white">Dashboard</h2>
+    <div className="space-y-4 md:space-y-6">
+      {/* Header */}
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <h2 className="text-xl md:text-2xl font-bold text-white">Dashboard</h2>
         <div className="flex items-center gap-2">
           <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
           <span className="text-sm text-slate-400">En línea</span>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+      {/* Stats Grid */}
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
         <StatCard
           title="Balance Total"
           value={`$${stats.totalBalance.toLocaleString()}`}
-          icon={<DollarSign size={24} />}
+          icon={<DollarSign size={20} className="md:w-6 md:h-6" />}
           trend="neutral"
         />
         <StatCard
           title="P&L Total"
           value={`${stats.dailyPnL >= 0 ? '+' : ''}$${stats.dailyPnL.toFixed(2)}`}
           change={stats.dailyPnLPercent}
-          icon={stats.dailyPnL >= 0 ? <ArrowUpRight size={24} /> : <ArrowDownRight size={24} />}
+          icon={stats.dailyPnL >= 0 ? <ArrowUpRight size={20} className="md:w-6 md:h-6" /> : <ArrowDownRight size={20} className="md:w-6 md:h-6" />}
           trend={stats.dailyPnL >= 0 ? 'up' : 'down'}
         />
         <StatCard
           title="Total Trades"
           value={stats.totalTrades}
-          icon={<Activity size={24} />}
+          icon={<Activity size={20} className="md:w-6 md:h-6" />}
         />
         <StatCard
           title="Win Rate"
           value={`${stats.winRate.toFixed(1)}%`}
-          icon={<TrendingUp size={24} />}
+          icon={<TrendingUp size={20} className="md:w-6 md:h-6" />}
           trend={stats.winRate >= 50 ? 'up' : 'down'}
         />
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      {/* Content Grid */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6">
+        {/* Active Strategies */}
         <Card title="Estrategias Activas" subtitle={`${stats.activeStrategies} en ejecución`}>
           <div className="space-y-3">
             <div className="flex items-center justify-between p-3 bg-slate-700/50 rounded-lg">
               <div className="flex items-center gap-3">
-                <Bot size={20} className="text-blue-400" />
-                <div>
-                  <p className="font-medium text-white">FreqAI Main</p>
+                <Bot size={20} className="text-blue-400 flex-shrink-0" />
+                <div className="min-w-0">
+                  <p className="font-medium text-white truncate">FreqAI Main</p>
                   <p className="text-sm text-slate-400">Multi-pair • 5m</p>
                 </div>
               </div>
@@ -133,9 +137,9 @@ export default function Dashboard() {
             </div>
             <div className="flex items-center justify-between p-3 bg-slate-700/50 rounded-lg">
               <div className="flex items-center gap-3">
-                <Bot size={20} className="text-purple-400" />
-                <div>
-                  <p className="font-medium text-white">Grid SOL/USDT</p>
+                <Bot size={20} className="text-purple-400 flex-shrink-0" />
+                <div className="min-w-0">
+                  <p className="font-medium text-white truncate">Grid SOL/USDT</p>
                   <p className="text-sm text-slate-400">SOL/USDT • Grid</p>
                 </div>
               </div>
@@ -144,6 +148,7 @@ export default function Dashboard() {
           </div>
         </Card>
 
+        {/* Recent Trades */}
         <Card title="Últimos Trades" subtitle="Operaciones recientes">
           <div className="space-y-3">
             {recentTrades.length === 0 ? (
@@ -151,8 +156,8 @@ export default function Dashboard() {
             ) : (
               recentTrades.map((trade) => (
                 <div key={trade.id} className="flex items-center justify-between p-3 bg-slate-700/50 rounded-lg">
-                  <div className="flex items-center gap-3">
-                    <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
+                  <div className="flex items-center gap-3 min-w-0">
+                    <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${
                       trade.side === 'buy' ? 'bg-green-400/20' : 'bg-red-400/20'
                     }`}>
                       {trade.side === 'buy' ? (
@@ -161,14 +166,14 @@ export default function Dashboard() {
                         <ArrowDownRight size={16} className="text-red-400" />
                       )}
                     </div>
-                    <div>
-                      <p className="font-medium text-white">{trade.pair}</p>
+                    <div className="min-w-0">
+                      <p className="font-medium text-white truncate">{trade.pair}</p>
                       <p className="text-sm text-slate-400">
                         {new Date(trade.opened_at).toLocaleDateString()}
                       </p>
                     </div>
                   </div>
-                  <div className="text-right">
+                  <div className="text-right flex-shrink-0">
                     <p className={`font-medium ${
                       (trade.profit_abs || 0) >= 0 ? 'text-green-400' : 'text-red-400'
                     }`}>

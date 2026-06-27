@@ -192,7 +192,9 @@
 - [x] **T5.10** — Implementar gráficos de rendimiento (Recharts) ✅
 - [x] **T5.11** — Vista de Portfolio detallada con gráficos ✅
 - [x] **T5.12** — Vista de Configuración/Settings ✅
-- [ ] **T5.13** — Diseño responsive para móvil
+- [x] **T5.13** — Diseño responsive para móvil ✅
+- [x] **T5.14** — Sistema de notificaciones con polling ✅
+- [x] **T5.15** — Hook WebSocket para tiempo real ✅
 
 ### FASE 6: App Móvil (Prioridad: BAJA)
 
@@ -238,6 +240,11 @@
 | F002 | 2026-06-27 | Mejora | Agregar componentes UI reutilizables | ✅ |
 | F003 | 2026-06-27 | Mejora | Agregar hooks personalizados para Supabase | ✅ |
 | F004 | 2026-06-27 | Mejora | Agregar SupabaseProvider para estado de conexión | ✅ |
+| F005 | 2026-06-27 | Mejora | Diseño responsive mobile-first | ✅ |
+| F006 | 2026-06-27 | Mejora | Sistema de notificaciones con polling | ✅ |
+| F007 | 2026-06-27 | Mejora | Hook WebSocket para actualizaciones tiempo real | ✅ |
+| F008 | 2026-06-27 | Mejora | Tests backend (FastAPI) | ✅ |
+| F009 | 2026-06-27 | Mejora | Tests frontend (Vitest + Testing Library) | ✅ |
 
 ---
 
