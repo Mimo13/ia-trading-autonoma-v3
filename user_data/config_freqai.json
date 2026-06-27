@@ -1,0 +1,130 @@
+{
+    "freqai": {
+        "enabled": true,
+        "purge_old_models": 2,
+        "train_period_days": 30,
+        "identifier": "ia_trading_v1",
+        "live_retrain_hours": 4,
+        "expiration_hours": 1,
+        "data_kitchen_thread_count": 4,
+        "model_training_thread_count": 2,
+        "feature_parameters": {
+            "include_timeframes": [
+                "5m"
+            ],
+            "include_corr_pairlist": [
+                "BTC/USDT",
+                "ETH/USDT",
+                "SOL/USDT",
+                "ADA/USDT"
+            ],
+            "include_timeframes_corr_pairs": [
+                "5m"
+            ],
+            "label_period_candles": 20,
+            "label_shift": 0,
+            "indicator_periods_candles": [10, 20, 50]
+        },
+        "data_split_parameters": {
+            "test_size": 0.25,
+            "shuffle": false,
+            "random_state": 42
+        },
+        "model_training_parameters": {
+            "n_estimators": 1000,
+            "learning_rate": 0.01,
+            "max_depth": 8,
+            "num_leaves": 31,
+            "min_child_samples": 20,
+            "reg_alpha": 0.1,
+            "reg_lambda": 0.1,
+            "subsample": 0.8,
+            "colsample_bytree": 0.8,
+            "random_state": 42,
+            "n_jobs": -1,
+            "verbosity": -1
+        }
+    },
+    "max_open_trades": 3,
+    "stake_currency": "USDT",
+    "stake_amount": "unlimited",
+    "tradable_balance_ratio": 0.99,
+    "fiat_display_currency": "USD",
+    "dry_run": true,
+    "dry_run_wallet": 1000,
+    "cancel_open_orders_on_exit": false,
+    "trading_mode": "spot",
+    "margin_mode": "",
+    "unfilledtimeout": {
+        "entry": 10,
+        "exit": 10,
+        "exit_timeout_count": 0,
+        "unit": "minutes"
+    },
+    "entry_pricing": {
+        "price_side": "same",
+        "use_order_book": true,
+        "order_book_top": 1,
+        "price_last_balance": 0.0,
+        "check_depth_of_market": {
+            "enabled": false,
+            "bids_to_ask_delta": 1
+        }
+    },
+    "exit_pricing": {
+        "price_side": "same",
+        "use_order_book": true,
+        "order_book_top": 1
+    },
+    "exchange": {
+        "name": "binance",
+        "key": "rd1X0OD14AA3xB5qBj5W4KI1JJ4q7YyjqyoZYIFvnQv1T4uON4u3BsXbgFp2Du05",
+        "secret": "gq8GxpflaWfBo5foKdjLBBfTYtMYMb7PWoGdBoSyUu2jdALPMZoIEvB9pj3wr777",
+        "ccxt_sync_config": {
+            "enableRateLimit": true
+        },
+        "ccxt_async_config": {
+            "enableRateLimit": true
+        },
+        "pair_whitelist": [
+            "BTC/USDT",
+            "ETH/USDT",
+            "SOL/USDT",
+            "ADA/USDT"
+        ],
+        "pair_blacklist": []
+    },
+    "pairlists": [
+        {
+            "method": "StaticPairList"
+        }
+    ],
+    "telegram": {
+        "enabled": true,
+        "token": "8987708942:AAGdEQET3mTHpU1THV3Nb20aIhAOyc0eS7U",
+        "chat_id": "7582277",
+        "notification_settings": {
+            "entry_fill": "on",
+            "exit_fill": "on",
+            "protection_trigger": "on",
+            "protection_trigger_global": "on"
+        }
+    },
+    "api_server": {
+        "enabled": true,
+        "listen_ip_address": "0.0.0.0",
+        "listen_port": 8080,
+        "verbosity": "error",
+        "enable_openapi": false,
+        "jwt_secret_key": "ia-trading-freqtrade-secret-key-2024",
+        "CORS_origins": [],
+        "username": "freqtrader",
+        "password": "password"
+    },
+    "bot_name": "IA Trading Bot - FreqAI",
+    "initial_state": "running",
+    "force_entry_enable": true,
+    "internals": {
+        "process_throttle_secs": 5
+    }
+}

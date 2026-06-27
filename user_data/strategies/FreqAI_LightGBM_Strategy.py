@@ -12,41 +12,28 @@ class FreqAI_LightGBM_Strategy(IStrategy):
     """
     
     INTERFACE_VERSION = 3
-    
-    # Optimal timeframe
     timeframe = '5m'
+    can_short = False
     
-    # Can this strategy go short?
-    can_short: bool = False
-    
-    # Minimal ROI designed for the strategy
     minimal_roi = {
         "60": 0.01,
         "30": 0.02,
-        "0": 0.04
+        "0": 0.03
     }
     
-    # Optimal stoploss
-    stoploss = -0.10
-    
-    # Trailing stoploss
+    stoploss = -0.08
     trailing_stop = True
     trailing_stop_positive = 0.01
     trailing_stop_positive_offset = 0.02
     trailing_only_offset_is_reached = True
     
-    # Run "populate_indicators()" only for new candle
     process_only_new_candles = True
-    
-    # Use exit signal
     use_exit_signal = True
     exit_profit_only = False
     ignore_roi_if_entry_signal = False
+    startup_candle_count = 100
     
-    # Number of candles the strategy requires before producing valid signals
-    startup_candle_count: int = 100
-    
-    # FreqAI settings
+    # FreqAI model configuration
     freqai_info = {
         "model": LightGBMClassifier,
         "train_params": {
@@ -63,31 +50,21 @@ class FreqAI_LightGBM_Strategy(IStrategy):
         },
     }
     
-    # Feature engineering parameters
-    rsi_period = 14
-    macd_fast = 12
-    macd_slow = 26
-    macd_signal = 9
-    bb_period = 20
-    bb_std = 2
-    ema_short = 20
-    ema_long = 50
-    
     def informative_pairs(self):
         return []
     
     def populate_indicators(self, dataframe: DataFrame, metadata: dict) -> DataFrame:
         # RSI
-        dataframe['rsi'] = ta.RSI(dataframe, timeperiod=self.rsi_period)
+        dataframe['rsi'] = ta.RSI(dataframe, timeperiod=14)
         
         # MACD
-        macd = ta.MACD(dataframe, fastperiod=self.macd_fast, slowperiod=self.macd_slow, signalperiod=self.macd_signal)
+        macd = ta.MACD(dataframe)
         dataframe['macd'] = macd['macd']
         dataframe['macdsignal'] = macd['macdsignal']
         dataframe['macdhist'] = macd['macdhist']
         
         # Bollinger Bands
-        bollinger = ta.BBANDS(dataframe, timeperiod=self.bb_period, nbdevup=self.bb_std, nbdevdn=self.bb_std)
+        bollinger = ta.BBANDS(dataframe, timeperiod=20, nbdevup=2.0, nbdevdn=2.0)
         dataframe['bb_lowerband'] = bollinger['lowerband']
         dataframe['bb_middleband'] = bollinger['middleband']
         dataframe['bb_upperband'] = bollinger['upperband']
@@ -95,14 +72,14 @@ class FreqAI_LightGBM_Strategy(IStrategy):
         dataframe['bb_percent'] = (dataframe['close'] - dataframe['bb_lowerband']) / (dataframe['bb_upperband'] - dataframe['bb_lowerband'])
         
         # EMAs
-        dataframe['ema_20'] = ta.EMA(dataframe, timeperiod=self.ema_short)
-        dataframe['ema_50'] = ta.EMA(dataframe, timeperiod=self.ema_long)
+        dataframe['ema_20'] = ta.EMA(dataframe, timeperiod=20)
+        dataframe['ema_50'] = ta.EMA(dataframe, timeperiod=50)
         
-        # Volume indicators
+        # Volume
         dataframe['volume_sma_20'] = ta.SMA(dataframe['volume'], timeperiod=20)
         dataframe['volume_ratio'] = dataframe['volume'] / dataframe['volume_sma_20']
         
-        # ATR for volatility
+        # ATR
         dataframe['atr'] = ta.ATR(dataframe, timeperiod=14)
         dataframe['atr_percent'] = dataframe['atr'] / dataframe['close'] * 100
         
@@ -111,7 +88,7 @@ class FreqAI_LightGBM_Strategy(IStrategy):
         dataframe['stoch_k'] = stoch['slowk']
         dataframe['stoch_d'] = stoch['slowd']
         
-        # ADX for trend strength
+        # ADX
         dataframe['adx'] = ta.ADX(dataframe)
         
         # Price changes
@@ -137,28 +114,21 @@ class FreqAI_LightGBM_Strategy(IStrategy):
         return dataframe
     
     def populate_entry_trend(self, dataframe: DataFrame, metadata: dict) -> DataFrame:
-        # FreqAI will handle the entry signals based on the model predictions
-        # The model will predict: 0 = hold, 1 = buy, 2 = sell
+        # Target for FreqAI training
+        dataframe['&s-target'] = 0  # hold
         
-        # Add the target variable for training
-        # This is what FreqAI will try to predict
-        dataframe['&s-target'] = 0  # Default: hold
-        
-        # Define buy conditions (for training data)
+        # Buy conditions
         buy_conditions = (
-            (dataframe['rsi'] < 30) &
+            (dataframe['rsi'] < 35) &
             (dataframe['macd'] > dataframe['macdsignal']) &
-            (dataframe['close'] < dataframe['bb_lowerband']) &
-            (dataframe['ema_20'] > dataframe['ema_50']) &
-            (dataframe['volume_ratio'] > 1.0)
+            (dataframe['close'] < dataframe['bb_lowerband'] * 1.02)
         )
         
-        # Define sell conditions (for training data)
+        # Sell conditions
         sell_conditions = (
-            (dataframe['rsi'] > 70) &
+            (dataframe['rsi'] > 65) &
             (dataframe['macd'] < dataframe['macdsignal']) &
-            (dataframe['close'] > dataframe['bb_upperband']) &
-            (dataframe['volume_ratio'] > 1.0)
+            (dataframe['close'] > dataframe['bb_upperband'] * 0.98)
         )
         
         dataframe.loc[buy_conditions, '&s-target'] = 1
@@ -167,25 +137,15 @@ class FreqAI_LightGBM_Strategy(IStrategy):
         return dataframe
     
     def populate_exit_trend(self, dataframe: DataFrame, metadata: dict) -> DataFrame:
-        # FreqAI will handle exit signals
         dataframe.loc[:, 'exit_long'] = 0
         return dataframe
     
     def feature_engineering_expand_all(self, dataframe: DataFrame, metadata: dict) -> DataFrame:
-        """
-        FreqAI will use this method to expand features for all timeframes
-        """
         return dataframe
     
     def feature_engineering_expand_basic(self, dataframe: DataFrame, metadata: dict) -> DataFrame:
-        """
-        FreqAI will use this method to expand basic features
-        """
         return dataframe
     
     def set_freqai_targets(self, dataframe: DataFrame, metadata: dict) -> DataFrame:
-        """
-        Set the targets for FreqAI prediction
-        """
         dataframe['&s-target'] = dataframe['&s-target'].shift(-1)
         return dataframe
