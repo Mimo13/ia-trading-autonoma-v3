@@ -122,12 +122,12 @@
 
 ### FASE 0: Fundación (Prioridad: ALTA)
 
-- [ ] **T0.1** — Inicializar repositorio Git con estructura de proyecto
-- [ ] **T0.2** — Crear `.gitignore` (node_modules, .env, *.pyc, etc.)
-- [ ] **T0.3** — Configurar entorno Python (pyenv/venv) para Freqtrade
-- [ ] **T0.4** — Configurar entorno Node.js para frontend
-- [ ] **T0.5** — Crear `docker-compose.yml` para Freqtrade + PostgreSQL
-- [ ] **T0.6** — Documentar requisitos previos en `README.md`
+- [x] **T0.1** — Inicializar repositorio Git ✅
+- [x] **T0.2** — Crear `.gitignore` ✅
+- [x] **T0.3** — Configurar entorno Python (venv) ✅
+- [x] **T0.4** — Configurar entorno Node.js para frontend ✅
+- [x] **T0.5** — Documentar requisitos previos en `README.md` ✅
+- [ ] **T0.6** — Crear `docker-compose.yml` para Freqtrade
 
 ### FASE 1: Backend y Base de Datos (Prioridad: ALTA)
 
@@ -179,16 +179,17 @@
 
 ### FASE 5: Dashboard Web (Prioridad: MEDIA)
 
-- [ ] **T5.1** — Inicializar proyecto React (Vite + TypeScript)
-- [ ] **T5.2** — Configurar Supabase client y autenticación
-- [ ] **T5.3** — Crear layout base (sidebar, header, routing)
-- [ ] **T5.4** — Implementar vista de Portfolio (balance, evolución)
-- [ ] **T5.5** — Implementar vista de Trades (tabla, filtros, detalle)
-- [ ] **T5.6** — Implementar vista de Señales IA (con justificación)
-- [ ] **T5.7** — Implementar vista de Estrategias (estado, config)
-- [ ] **T5.8** — Implementar gráficos de rendimiento (Chart.js/Recharts)
-- [ ] **T5.9** — Implementar sistema de alertas en tiempo real
-- [ ] **T5.10** — Diseño responsive para móvil
+- [x] **T5.1** — Inicializar proyecto React (Vite + TypeScript) ✅
+- [x] **T5.2** — Configurar Supabase client y autenticación ✅
+- [x] **T5.3** — Crear layout base (sidebar, header, routing) ✅
+- [x] **T5.4** — Implementar vista de Portfolio (balance, evolución) ✅
+- [x] **T5.5** — Implementar vista de Trades (tabla, filtros, detalle) ✅
+- [x] **T5.6** — Implementar vista de Señales IA (con justificación) ✅
+- [x] **T5.7** — Implementar vista de Estrategias (estado, config) ✅
+- [x] **T5.8** — Implementar sistema de alertas en tiempo real ✅
+- [x] **T5.9** — Componentes UI reutilizables (Card, Badge, Button, Table) ✅
+- [ ] **T5.10** — Implementar gráficos de rendimiento (Recharts)
+- [ ] **T5.11** — Diseño responsive para móvil
 
 ### FASE 6: App Móvil (Prioridad: BAJA)
 
@@ -227,11 +228,12 @@
 
 ## FIXES Y MEJORAS (Log Continuo)
 
-<!-- Agregar fixes y mejoras aquí conforme se vayan resolviendo -->
-
 | ID | Fecha | Tipo | Descripción | Estado |
 |----|-------|------|-------------|--------|
-| — | — | — | — | — |
+| F001 | 2026-06-27 | Fix | Corregir import de supabase en scripts (usar REST API) | ✅ |
+| F002 | 2026-06-27 | Mejora | Agregar componentes UI reutilizables | ✅ |
+| F003 | 2026-06-27 | Mejora | Agregar hooks personalizados para Supabase | ✅ |
+| F004 | 2026-06-27 | Mejora | Agregar SupabaseProvider para estado de conexión | ✅ |
 
 ---
 
